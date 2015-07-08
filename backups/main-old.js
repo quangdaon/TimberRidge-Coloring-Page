@@ -132,7 +132,6 @@
 			circle.setAttributeNS(null, 'cy', 0);
 			circle.setAttributeNS(null, 'r', Math.sqrt(Math.pow(el.offsetWidth,2) + Math.pow(el.offsetHeight,2)));
 			circle.setAttributeNS(null, 'fill', color);
-			el.setAttributeNS(null, 'fill', color);
 
 			dummy.appendChild(g);
 			g.appendChild(circle);

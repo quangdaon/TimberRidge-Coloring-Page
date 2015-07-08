@@ -71,6 +71,7 @@
 			overlap: 0.75,
 			ondragenter: function (event) {
 				classie.add(event.target, 'paint-area--highlight');
+				$('path').css('stroke', event.relatedTarget.getAttribute('data-color'));
 			},
 			ondragleave: function (event) {
 				classie.remove(event.target, 'paint-area--highlight');
@@ -132,6 +133,7 @@
 			circle.setAttributeNS(null, 'cy', 0);
 			circle.setAttributeNS(null, 'r', Math.sqrt(Math.pow(el.offsetWidth,2) + Math.pow(el.offsetHeight,2)));
 			circle.setAttributeNS(null, 'fill', color);
+			el.setAttributeNS(null, 'fill', color);
 
 			dummy.appendChild(g);
 			g.appendChild(circle);
@@ -171,6 +173,7 @@
 	function resetColors() {
 		[].slice.call(document.querySelectorAll('.paint-area')).forEach(function(el) {
 			el.style[classie.has(el, 'paint-area--text') ? 'color' : 'background-color'] = '';
+			el.setAttributeNS(null, 'fill', '#FFFFFF');
 		});
 	}
 
