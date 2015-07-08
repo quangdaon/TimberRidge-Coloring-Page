@@ -180,3 +180,16 @@
 	init();
 
 })();
+
+for (var i = 0; i <= $(".color-swatch").length; i++) {
+	var colorParent = $(".color-swatch")[i];
+	var fillColor = function(){return $(colorParent).find(".drag-element").data("color")}
+	$(colorParent).css("background-color", fillColor());
+	$(colorParent).find(".cno").css("background-color", fillColor());
+};
+
+$('body').keyup(function(event){
+    if(event.keyCode == 13){
+        $(".info-close").click();
+    }
+});
