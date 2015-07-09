@@ -170,7 +170,7 @@
 		}, 25);
 	}
 
-	function resetColors() {
+	function resetColors(elem) {
 		[].slice.call(document.querySelectorAll('.paint-area')).forEach(function(el) {
 			el.style[classie.has(el, 'paint-area--text') ? 'color' : 'background-color'] = '';
 			el.setAttributeNS(null, 'fill', '#FFFFFF');
@@ -193,3 +193,12 @@ $('body').keyup(function(event){
         $(".info-close").click();
     }
 });
+
+$('.paint-area').dblclick(function(){
+	clrColor(this);
+});
+
+clrColor = function(pathElement){
+	pathElement.setAttributeNS(null, 'fill', "#FFFFFF");
+	$(".paint-area").removeClass("paint--active");
+}
