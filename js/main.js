@@ -45,8 +45,12 @@
 	}
 
 	function init() {
+
+
+
 		document.querySelector('button.info-close').addEventListener('click', function() {
 			var info = document.querySelector('.info-wrap');
+			// alert(info.parentNode);
 			info.parentNode.removeChild(info);
 		});
 
@@ -108,7 +112,52 @@
 		});
 
 		// reset colors
-		document.querySelector('button.reset-button').addEventListener('click', resetColors);
+
+		
+		document.querySelector('button.reset-button').addEventListener('click', function(){
+				// alert("The code broke :p");
+				var resetBoxContainer = document.createElement('div');
+				resetBoxContainer.setAttribute('class', 'reset-confirm-wrap dialog-wrap');
+				resetBoxContainer.setAttribute('id', 'reset-confirm');
+
+				var resetBox = document.createElement('div');
+				resetBox.setAttribute('class', 'reset-confirm dialog');
+
+				var resetHeader = document.createElement('h3');
+				resetHeader.appendChild(document.createTextNode('Timber Ridge Coloring Page'));
+
+				var resetWarning = document.createElement('p');
+				resetWarning.appendChild(document.createTextNode('Are you sure you want to reset the colors?'));
+
+				var resetCancelButton = document.createElement('button');
+				resetCancelButton.setAttribute('class', 'reset-confirm-cancel');
+				resetCancelButton.appendChild(document.createTextNode('Ha! Nope.'));
+
+				var resetConfirmButton = document.createElement('button');
+				resetConfirmButton.setAttribute('class', 'reset-confirm-submit');
+				resetConfirmButton.appendChild(document.createTextNode('Yesh pweez c:'));
+
+				resetBox.appendChild(resetHeader);
+				resetBox.appendChild(resetWarning);
+				resetBox.appendChild(resetCancelButton);
+				resetBox.appendChild(resetConfirmButton);
+
+				resetBoxContainer.appendChild(resetBox);
+
+				document.querySelector('.content').appendChild(resetBoxContainer);
+
+
+				document.querySelector('button.reset-confirm-cancel').addEventListener('click', function() {
+					var reset = document.querySelector('.reset-confirm-wrap');
+					reset.parentNode.removeChild(reset);
+				});
+				
+				document.querySelector('button.reset-confirm-submit').addEventListener('click', function() {
+					resetColors();
+					var reset = document.querySelector('.reset-confirm-wrap');
+					reset.parentNode.removeChild(reset);
+				});
+		});
 	}
 
 	function paintArea(ev, el, color) {
