@@ -28,7 +28,7 @@
 <center>
 
 <?php
-	echo file_get_contents("coloring-pages/moose-1.svg");
+	echo file_get_contents("coloring-pages/summer-1.svg");
 ?>
 
 </center>

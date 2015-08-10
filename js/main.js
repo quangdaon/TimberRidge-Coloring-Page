@@ -131,7 +131,7 @@
 
 				var resetCancelButton = document.createElement('button');
 				resetCancelButton.setAttribute('class', 'reset-confirm-cancel');
-				resetCancelButton.appendChild(document.createTextNode('Ha! Nope.'));
+				resetCancelButton.appendChild(document.createTextNode('No. Sowiezz'));
 
 				var resetConfirmButton = document.createElement('button');
 				resetConfirmButton.setAttribute('class', 'reset-confirm-submit');
