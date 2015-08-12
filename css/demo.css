@@ -1,19 +1,28 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,700);
-
 @font-face {
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'codropsicons';
-	src:url('../fonts/codropsicons/codropsicons.eot');
-	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
-		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
-		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	src: url('../fonts/codropsicons/codropsicons.eot');
+	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
-.clearfix:before, .clearfix:after {display: table;  content: ''; }
-.clearfix:after { clear: both; }
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: '';
+}
+
+.clearfix:after {
+	clear: both;
+}
 
 body {
 	background: #525252;
@@ -29,7 +38,8 @@ a {
 	text-decoration: none;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
 	color: #fff;
 }
 
@@ -45,7 +55,9 @@ button:focus {
 	pointer-events: none;
 }
 
+
 /* Header */
+
 .codrops-header {
 	padding: 1.5em 1em;
 	text-align: center;
@@ -66,7 +78,9 @@ button:focus {
 	font-size: 0.45em;
 }
 
+
 /* Top Navigation Style */
+
 .codrops-links {
 	position: relative;
 	display: inline-block;
@@ -84,8 +98,8 @@ button:focus {
 	height: 100%;
 	background: #ddd;
 	content: '';
-	-webkit-transform: rotate3d(0,0,1,22.5deg);
-	transform: rotate3d(0,0,1,22.5deg);
+	-webkit-transform: rotate3d(0, 0, 1, 22.5deg);
+	transform: rotate3d(0, 0, 1, 22.5deg);
 }
 
 .codrops-icon {
@@ -120,7 +134,9 @@ button:focus {
 	content: "\e004";
 }
 
+
 /* Demo links */
+
 .codrops-demos {
 	margin: 2em 0 0;
 }
@@ -134,12 +150,17 @@ button:focus {
 	color: #333;
 }
 
+
 /* Content */
+
 .content {
 	padding: 0 40px 1em 100px;
+	margin-top: 20px;
 }
 
+
 /* Mockup */
+
 .mockup-browser {
 	position: relative;
 	max-width: 1800px;
@@ -294,6 +315,7 @@ button:focus {
 	content: '\2015 ';
 }
 
+
 /* width classes */
 
 .mockup-width--half {
@@ -309,7 +331,7 @@ button:focus {
 }
 
 .mockup-img {
-	background: rgba(0,0,0,0.08);
+	background: rgba(0, 0, 0, 0.08);
 	text-align: center;
 	line-height: 200px;
 	height: 200px;
@@ -388,12 +410,14 @@ button:focus {
 	margin-left: 10px;
 }
 
+
 /* Set element that can be painted to overflow hidden */
+
 .paint-area {
 	overflow: hidden;
 	position: relative;
 	-webkit-transition: fill 2.2s, color 0.2s;
-	transition: fill 2.2s, color 0.2s;
+	transition: fill 0.2s, color 0.2s;
 }
 
 .paint--active.paint-area {
@@ -407,15 +431,11 @@ button:focus {
 }
 
 .paint-area.paint-area--highlight:not(.paint-area--text) {
-	box-shadow: inset 0 0 0 3px rgb(133,125,255);
+	box-shadow: inset 0 0 0 3px rgb(133, 125, 255);
 }
 
 .paint-area--text.paint-area--highlight {
-	text-shadow: 
-		-1px -1px 0 rgba(133,125,255,0.5),
-		1px -1px 0 rgba(133,125,255,0.5),
-		-1px 1px 0 rgba(133,125,255,0.5),
-		1px 1px 0 rgba(133,125,255,0.5);
+	text-shadow: -1px -1px 0 rgba(133, 125, 255, 0.5), 1px -1px 0 rgba(133, 125, 255, 0.5), -1px 1px 0 rgba(133, 125, 255, 0.5), 1px 1px 0 rgba(133, 125, 255, 0.5);
 }
 
 svg path {
@@ -435,16 +455,16 @@ svg path.paint-area--highlight {
 }
 
 .paint {
-	position: absolute; 
-	top: 0; 
+	position: absolute;
+	top: 0;
 	left: 0;
 	z-index: 0;
 }
 
 .paint circle {
 	fill-opacity: 0;
-	-webkit-transform: scale3d(0,0,1);
-	transform: scale3d(0,0,1);
+	-webkit-transform: scale3d(0, 0, 1);
+	transform: scale3d(0, 0, 1);
 	-webkit-transition: -webkit-transform 0.8s, fill-opacity 0.4s;
 	transition: transform 0.8s, fill-opacity 0.4s;
 	-webkit-transition-timing-function: ease-out;
@@ -453,11 +473,13 @@ svg path.paint-area--highlight {
 
 .paint--active .paint circle {
 	fill-opacity: 1;
-	-webkit-transform: scale3d(1,1,1);
-	transform: scale3d(1,1,1);
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
 }
 
+
 /* Customizer */
+
 .customizer {
 	background: #444;
 	position: fixed;
@@ -513,8 +535,8 @@ svg path.paint-area--highlight {
 	left: 5px;
 	position: absolute;
 	border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-	-webkit-transform: rotate3d(0,0,1,-45deg);
-	transform: rotate3d(0,0,1,-45deg);
+	-webkit-transform: rotate3d(0, 0, 1, -45deg);
+	transform: rotate3d(0, 0, 1, -45deg);
 }
 
 .drop-helper-1,
@@ -563,10 +585,10 @@ svg path.paint-area--highlight {
 .drag-element--dropped .drop {
 	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
 	transition: transform 0.2s, opacity 0.2s;
-	-webkit-transition-timing-function: cubic-bezier(0.6,0.04,0.98,0.335);
-	transition-timing-function: cubic-bezier(0.6,0.04,0.98,0.335);
-	-webkit-transform: translate3d(0,25px,0) rotate3d(0,0,1,-45deg) scale3d(0.2,0.2,1);
-	transform: translate3d(0,25px,0) rotate3d(0,0,1,-45deg) scale3d(0.2,0.2,1);
+	-webkit-transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+	transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+	-webkit-transform: translate3d(0, 25px, 0) rotate3d(0, 0, 1, -45deg) scale3d(0.2, 0.2, 1);
+	transform: translate3d(0, 25px, 0) rotate3d(0, 0, 1, -45deg) scale3d(0.2, 0.2, 1);
 	opacity: 0;
 }
 
@@ -577,7 +599,7 @@ svg path.paint-area--highlight {
 }
 
 .drag-element--dropped .drop-helper-2,
-.drag-element--dropped .drop-helper-4  {
+.drag-element--dropped .drop-helper-4 {
 	-webkit-animation: drop-anim-2 0.3s ease-out 0.15s forwards;
 	animation: drop-anim-2 0.3s ease-out 0.15s forwards;
 }
@@ -589,64 +611,64 @@ svg path.paint-area--highlight {
 
 @-webkit-keyframes drop-anim-1 {
 	0% {
-		-webkit-transform: rotate3d(0,0,1,5deg);
-		transform: rotate3d(0,0,1,5deg);
+		-webkit-transform: rotate3d(0, 0, 1, 5deg);
+		transform: rotate3d(0, 0, 1, 5deg);
 		opacity: 0;
 	}
 	50% {
 		opacity: 0.5;
 	}
 	100% {
-		-webkit-transform: rotate3d(0,0,1,-90deg);
-		transform: rotate3d(0,0,1,-90deg);
+		-webkit-transform: rotate3d(0, 0, 1, -90deg);
+		transform: rotate3d(0, 0, 1, -90deg);
 		opacity: 0;
 	}
 }
 
 @keyframes drop-anim-1 {
 	0% {
-		-webkit-transform: rotate3d(0,0,1,5deg);
-		transform: rotate3d(0,0,1,5deg);
+		-webkit-transform: rotate3d(0, 0, 1, 5deg);
+		transform: rotate3d(0, 0, 1, 5deg);
 		opacity: 0;
 	}
 	50% {
 		opacity: 0.5;
 	}
 	100% {
-		-webkit-transform: rotate3d(0,0,1,-90deg);
-		transform: rotate3d(0,0,1,-90deg);
+		-webkit-transform: rotate3d(0, 0, 1, -90deg);
+		transform: rotate3d(0, 0, 1, -90deg);
 		opacity: 0;
 	}
 }
 
 @-webkit-keyframes drop-anim-2 {
 	0% {
-		-webkit-transform: rotate3d(0,0,1,-5deg);
-		transform: rotate3d(0,0,1,-5deg);
+		-webkit-transform: rotate3d(0, 0, 1, -5deg);
+		transform: rotate3d(0, 0, 1, -5deg);
 		opacity: 0;
 	}
 	50% {
 		opacity: 0.5;
 	}
 	100% {
-		-webkit-transform: rotate3d(0,0,1,90deg);
-		transform: rotate3d(0,0,1,90deg);
+		-webkit-transform: rotate3d(0, 0, 1, 90deg);
+		transform: rotate3d(0, 0, 1, 90deg);
 		opacity: 0;
 	}
 }
 
 @keyframes drop-anim-2 {
 	0% {
-		-webkit-transform: rotate3d(0,0,1,-5deg);
-		transform: rotate3d(0,0,1,-5deg);
+		-webkit-transform: rotate3d(0, 0, 1, -5deg);
+		transform: rotate3d(0, 0, 1, -5deg);
 		opacity: 0;
 	}
 	50% {
 		opacity: 0.5;
 	}
 	100% {
-		-webkit-transform: rotate3d(0,0,1,90deg);
-		transform: rotate3d(0,0,1,90deg);
+		-webkit-transform: rotate3d(0, 0, 1, 90deg);
+		transform: rotate3d(0, 0, 1, 90deg);
 		opacity: 0;
 	}
 }
@@ -671,7 +693,9 @@ svg path.paint-area--highlight {
 	background-size: 100%;
 }
 
+
 /* Related demos */
+
 .content--related {
 	text-align: center;
 	font-weight: bold;
@@ -715,7 +739,7 @@ svg path.paint-area--highlight {
 	align-items: center;
 	-webkit-justify-content: center;
 	justify-content: center;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0, 0, 0, 0.7);
 	z-index: 999999;
 	font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
 }
@@ -728,7 +752,7 @@ svg path.paint-area--highlight {
 	font-size: 15px;
 	line-height: 1.5;
 	text-align: center;
-	box-shadow: 0 0 30px rgba(0,0,0,0.2);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .dialog h3 {
@@ -831,5 +855,3 @@ svg path.paint-area--highlight {
 		font-size: 1.5em;
 	}
 }
-
-

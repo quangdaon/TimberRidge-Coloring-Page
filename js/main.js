@@ -161,62 +161,7 @@
 	}
 
 	function paintArea(ev, el, color) {
-		var type = 'area';
-		if(classie.has(el, 'paint-area--text')) {
-			type = 'text';
-		}
-
-		if( type === 'area' ) {
-			// create SVG element
-			var dummy = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-			dummy.setAttributeNS(null, 'version', '1.1');
-			dummy.setAttributeNS(null, 'width', '100%');
-			dummy.setAttributeNS(null, 'height', '100%');
-			dummy.setAttributeNS(null, 'class', 'paint');
-
-			var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-			g.setAttributeNS(null, 'transform', 'translate(' + Number(ev.pageX - getOffset(el).left) + ', ' + Number(ev.pageY - getOffset(el).top) + ')');
-
-			var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-			circle.setAttributeNS(null, 'cx', 0);
-			circle.setAttributeNS(null, 'cy', 0);
-			circle.setAttributeNS(null, 'r', Math.sqrt(Math.pow(el.offsetWidth,2) + Math.pow(el.offsetHeight,2)));
-			circle.setAttributeNS(null, 'fill', color);
 			el.setAttributeNS(null, 'fill', color);
-
-			dummy.appendChild(g);
-			g.appendChild(circle);
-			el.appendChild(dummy);
-		}
-
-		setTimeout(function() {
-			classie.add(el, 'paint--active');
-
-			if( type === 'text' ) {
-				el.style.color = color;
-				var onEndTransCallbackFn = function(ev) {
-					if( ev.target != this ) return;
-					this.removeEventListener( transEndEventName, onEndTransCallbackFn );
-					classie.remove(el, 'paint--active');
-				};
-
-				el.addEventListener(transEndEventName, onEndTransCallbackFn);
-			}
-			else {
-				var onEndTransCallbackFn = function(ev) {
-					if( ev.target != this || ev.propertyName === 'fill-opacity' ) return;
-					this.removeEventListener(transEndEventName, onEndTransCallbackFn);
-					// set the color
-					el.style.backgroundColor = color;
-					// remove SVG element
-					el.removeChild(dummy);
-
-					setTimeout(function() { classie.remove(el, 'paint--active'); }, 25);
-				};
-
-				circle.addEventListener(transEndEventName, onEndTransCallbackFn);
-			}
-		}, 25);
 	}
 
 	function resetColors(elem) {
@@ -245,6 +190,7 @@ $('body').keyup(function(event){
 
 $('.paint-area').dblclick(function(){
 	clrColor(this);
+	// this.setAttributeNS(null, 'fill', '#f00');
 });
 
 clrColor = function(pathElement){
