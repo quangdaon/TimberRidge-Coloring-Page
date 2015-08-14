@@ -783,7 +783,7 @@ svg path.paint-area--highlight {
 	color: #bbffbb;
 }
 
-.dialog button.reset-confirm-cancel:hover {
+.dialog button.cancel-button:hover {
 	border-color: #ffbbbb;
 	color: #ffbbbb;
 }

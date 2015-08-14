@@ -67,7 +67,7 @@
             var info = document.querySelector('.info-wrap');
             // alert(info.parentNode);
             $(info).animate({
-                opacity: 0
+                "opacity": 0
             }, 50, function() {
                 info.parentNode.removeChild(info);
             });
@@ -136,11 +136,11 @@
         document.querySelector('button.reset-button').addEventListener('click', function() {
             // alert("The code broke :p");
             var resetBoxContainer = document.createElement('div');
-            resetBoxContainer.setAttribute('class', 'reset-confirm-wrap dialog-wrap');
+            $(resetBoxContainer).addClass('reset-confirm-wrap dialog-wrap');
             resetBoxContainer.setAttribute('id', 'reset-confirm');
 
             var resetBox = document.createElement('div');
-            resetBox.setAttribute('class', 'reset-confirm dialog');
+            $(resetBox).addClass('reset-confirm dialog');
 
             var resetHeader = document.createElement('h3');
             resetHeader.appendChild(document.createTextNode('Timber Ridge Coloring Page'));
@@ -149,11 +149,12 @@
             resetWarning.appendChild(document.createTextNode('Are you sure you want to reset the colors?'));
 
             var resetCancelButton = document.createElement('button');
-            resetCancelButton.setAttribute('class', 'reset-confirm-cancel');
+            $(resetCancelButton).addClass('reset-confirm-cancel');
+            $(resetCancelButton).addClass('cancel-button');
             resetCancelButton.appendChild(document.createTextNode('No. Sowiezz'));
 
             var resetConfirmButton = document.createElement('button');
-            resetConfirmButton.setAttribute('class', 'reset-confirm-submit');
+            $(resetConfirmButton).addClass('reset-confirm-submit');
             resetConfirmButton.appendChild(document.createTextNode('Yesh pweez c:'));
 
             resetBox.appendChild(resetHeader);
@@ -163,7 +164,7 @@
 
             resetBoxContainer.appendChild(resetBox);
             resetBoxContainer.style.opacity = 0;
-                document.querySelector('.content').appendChild(resetBoxContainer);
+            document.querySelector('.content').appendChild(resetBoxContainer);
 
             $(resetBoxContainer).animate({
                 opacity: 1
@@ -175,21 +176,21 @@
             document.querySelector('button.reset-confirm-cancel').addEventListener('click', function() {
                 var reset = document.querySelector('.reset-confirm-wrap');
 
-	            $(reset).animate({
-	                opacity: 0
-	            }, 50, function() {
-                	reset.parentNode.removeChild(reset);
-	            });
+                $(reset).animate({
+                    opacity: 0
+                }, 50, function() {
+                    reset.parentNode.removeChild(reset);
+                });
             });
 
             document.querySelector('button.reset-confirm-submit').addEventListener('click', function() {
                 resetColors();
                 var reset = document.querySelector('.reset-confirm-wrap');
-	            $(reset).animate({
-	                opacity: 0
-	            }, 50, function() {
-                	reset.parentNode.removeChild(reset);
-	            });
+                $(reset).animate({
+                    opacity: 0
+                }, 50, function() {
+                    reset.parentNode.removeChild(reset);
+                });
             });
         });
     }
@@ -227,6 +228,69 @@ $('body').keyup(function(event) {
 $('.paint-area').dblclick(function() {
     clrColor(this);
     // this.setAttributeNS(null, 'fill', '#f00');
+});
+
+$(".page-selector").change(function() {
+
+    var pageChangeBoxContainer = document.createElement('div');
+    $(pageChangeBoxContainer).addClass('pageChange-confirm-wrap dialog-wrap');
+    pageChangeBoxContainer.setAttribute('id', 'pageChange-confirm');
+
+    var pageChangeBox = document.createElement('div');
+    $(pageChangeBox).addClass('pageChange-confirm dialog');
+
+    var pageChangeHeader = document.createElement('h3');
+    pageChangeHeader.appendChild(document.createTextNode('Timber Ridge Coloring Page'));
+
+    var pageChangeWarning = document.createElement('p');
+    pageChangeWarning.appendChild(document.createTextNode('Are you sure you want to pageChange the colors?'));
+
+    var pageChangeCancelButton = document.createElement('button');
+    $(pageChangeCancelButton).addClass('pageChange-confirm-cancel');
+    $(pageChangeCancelButton).addClass('cancel-button');
+    pageChangeCancelButton.appendChild(document.createTextNode('No. Sowiezz'));
+
+    var pageChangeConfirmButton = document.createElement('button');
+    $(pageChangeConfirmButton).addClass('pageChange-confirm-submit');
+    pageChangeConfirmButton.appendChild(document.createTextNode('Yesh pweez c:'));
+
+    pageChangeBox.appendChild(pageChangeHeader);
+    pageChangeBox.appendChild(pageChangeWarning);
+    pageChangeBox.appendChild(pageChangeCancelButton);
+    pageChangeBox.appendChild(pageChangeConfirmButton);
+
+    pageChangeBoxContainer.appendChild(pageChangeBox);
+    pageChangeBoxContainer.style.opacity = 0;
+    document.querySelector('.content').appendChild(pageChangeBoxContainer);
+
+    $(pageChangeBoxContainer).animate({
+        opacity: 1
+    }, 50);
+
+    document.querySelector('button.pageChange-confirm-cancel').addEventListener('click', function() {
+        var pageChange = document.querySelector('.pageChange-confirm-wrap');
+
+        $(pageChange).animate({
+            opacity: 0
+        }, 50, function() {
+            pageChange.parentNode.removeChild(pageChange);
+        });
+        $(".page-selector").val($("#coloring-page").attr("class"));
+    });
+
+    document.querySelector('button.pageChange-confirm-submit').addEventListener('click', function() {
+        $("#coloring-page").removeClass();
+        $("#coloring-page").addClass($(".page-selector").val());
+        $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg");
+        var pageChange = document.querySelector('.pageChange-confirm-wrap');
+        $(pageChange).animate({
+            opacity: 0
+        }, 50, function() {
+            pageChange.parentNode.removeChild(pageChange);
+        });
+        $(".page-selector").val($("#coloring-page").attr("class"));
+    });
+
 });
 
 clrColor = function(pathElement) {

@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<script src="js/jquery-2.1.4.js"></script>
 	<script src="js/modernizr.custom.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -26,6 +27,9 @@
 
 			</center>
 		</div><!-- /content -->
+		<div class="selector">
+			Temporary Test Selector:
+		</div>
 		<div class="customizer">
 			<ul class="color-tool"> <!-- cno = Color No. -->
 				<li class="color-swatch cno"><div class="drag-element" data-color="hsl(0,0%,10%)"><div class="drop cno"></div><i class="drop-helper-1 cno"></i><i class="drop-helper-2 cno"></i><i class="drop-helper-3 cno"></i><i class="drop-helper-4 cno"></i></div></li>
