@@ -10,6 +10,14 @@
  */
 (function() {
 
+    $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg", function() {
+        $(this).find(".paint-area").dblclick(function() {
+            clrColor(this);
+            // this.setAttributeNS(null, 'fill', '#f00');
+        });
+    });
+    $("#coloring-page").addClass($(".page-selector").val());
+
     var docElem = window.document.documentElement,
         // transition end event name
         transEndEventNames = {
@@ -210,6 +218,8 @@
 
 })();
 
+
+
 for (var i = 0; i <= $(".color-swatch").length; i++) {
     var colorParent = $(".color-swatch")[i];
     var fillColor = function() {
@@ -225,10 +235,6 @@ $('body').keyup(function(event) {
     }
 });
 
-$('.paint-area').dblclick(function() {
-    clrColor(this);
-    // this.setAttributeNS(null, 'fill', '#f00');
-});
 
 $(".page-selector").change(function() {
 
@@ -281,7 +287,13 @@ $(".page-selector").change(function() {
     document.querySelector('button.pageChange-confirm-submit').addEventListener('click', function() {
         $("#coloring-page").removeClass();
         $("#coloring-page").addClass($(".page-selector").val());
-        $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg");
+        $("#coloring-page").html("");
+        $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg", function() {
+        $(this).find(".paint-area").dblclick(function() {
+            clrColor(this);
+            // this.setAttributeNS(null, 'fill', '#f00');
+        });
+    });
         var pageChange = document.querySelector('.pageChange-confirm-wrap');
         $(pageChange).animate({
             opacity: 0
