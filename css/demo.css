@@ -32,6 +32,10 @@ body {
 	font-family: 'Raleway', Arial, sans-serif;
 }
 
+#coloring-page {
+	cursor: url("../img/oliy-cursor.png"), auto !important;
+}
+
 a {
 	outline: none;
 	color: #f2e0b1;
