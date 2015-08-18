@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coloring Page Guide</title>
+    <script src="../js/jquery-2.1.4.js"></script>
+    <style type="text/css">
+    #options select {
+        display: block;
+        width: 200px;
+    }
+    
+    #options select option {
+        text-align: center;
+    }
+    
+    .din {
+        display: none;
+    }
+    </style>
+    <script>
+    $(function() {
+        $("#adobe-collection").change(function() {
+            if ($(this).val() != "none") {
+                $("#photo-editor").val("ps-" + $(this).val());
+                $("#graphic-editor").val("ai-" + $(this).val());
+            }
+            // alert($(this).val());
+        });
+        $("#photo-editor").change(function(){
+        	$("#adobe-collection").val("none");
+        })
+        $("#graphic-editor").change(function(){
+        	$("#adobe-collection").val("none");
+        })
+    })
+    </script>
+</head>
+
+<body>
+    <div id="options">
+        <select name="adobe-collection" id="adobe-collection">
+            <option value="" class="option-label" disabled selected>-- Adobe Collection --</option>
+            <option value="other">Creative Suite 3</option>
+            <option value="other">Creative Suite 4</option>
+            <option value="cs5">Creative Suite 5</option>
+            <option value="other">Creative Suite 6</option>
+            <option value="other">Creative Suite 7</option>
+            <option value="cc14">Creative Cloud 2014</option>
+            <option value="cc15">Creative Cloud 2015</option>
+            <option value="none">None</option>
+        </select>
+        <select name="photo-editor" id="photo-editor">
+            <option class="option-label" value="" disabled selected>-- Select Photo Editor --</option>
+            <option value="ps-cs5">Photoshop CS 5</option>
+            <option value="ps-cc14">Photoshop CC 2014</option>
+            <option value="ps-cc15">Photoshop CC 2015</option>
+            <option value="ps-other">Other Photoshop</option>
+            <option value="other">Other</option>
+        </select>
+        <select name="graphic-editor" id="graphic-editor">
+            <option class="option-label" value="" disabled selected>-- Select Graphic Editor --</option>
+            <option value="ai-cs5">Illustrator CS 5</option>
+            <option value="ai-cc14">Illustrator CC 2014</option>
+            <option value="ai-cc15">Illustrator CC 2015</option>
+            <option value="ai-other">Other Illustrator</option>
+            <option value="other">Other</option>
+        </select>
+        <select name="text-editor" id="text-editor">
+            <option class="option-label" value="" disabled selected>-- Select Text Editor --</option>
+            <option value="sublime">Sublime Text 2</option>
+            <option value="sublime">Sublime Text 3</option>
+            <option value="npp">Notepad++</option>
+            <option value="other">Notepad</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div id="instructions">
+    </div>
+</body>
+
+</html>

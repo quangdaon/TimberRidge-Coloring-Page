@@ -235,6 +235,13 @@ $('body').keyup(function(event) {
     }
 });
 
+$('body').keypress(function(event) {
+    console.log(event.keyCode);
+    if (event.keyCode == 96) {
+        window.location.href = "./docs/tutorial.html";
+    }
+});
+
 
 $(".page-selector").change(function() {
 
