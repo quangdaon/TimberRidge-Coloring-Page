@@ -8,6 +8,22 @@
  * Copyright 2015, Codrops
  * http://www.codrops.com
  */
+
+
+var colorsList = [
+    "hsl(0,0%,10%)",
+    "hsl(25,100%,25%)",
+    "hsl(0,100%,65%)",
+    "hsl(25,100%,65%)",
+    "hsl(45,100%,65%)",
+    "hsl(90,100%,65%)",
+    "hsl(180,100%,65%)",
+    "hsl(225,100%,65%)",
+    "hsl(270,100%,65%)",
+    "#A3A3A3",
+    "#FFFFFF"
+];
+
 (function() {
 
     $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg", function() {
@@ -17,6 +33,17 @@
         });
     });
     $("#coloring-page").addClass($(".page-selector").val());
+
+    genColorSwatches();
+    setColors();
+
+    // $(".color-slider").change(function() {
+    //     var red = $("#red-slider").val();
+    //     var green = $("#green-slider").val();
+    //     var blue = $("#blue-slider").val();
+    //     $(".drag-element").attr("data-color", "rgb(" + red + "," + green + "," + blue + ")");
+    //     setColors();
+    // });
 
     var docElem = window.document.documentElement,
         // transition end event name
@@ -219,15 +246,16 @@
 })();
 
 
-
-for (var i = 0; i <= $(".color-swatch").length; i++) {
-    var colorParent = $(".color-swatch")[i];
-    var fillColor = function() {
-        return $(colorParent).find(".drag-element").data("color")
-    }
-    $(colorParent).css("background-color", fillColor());
-    $(colorParent).find(".cno").css("background-color", fillColor());
-};
+function setColors() {
+    for (var i = 0; i <= $(".color-swatch").length; i++) {
+        var colorParent = $(".color-swatch")[i];
+        var fillColor = function() {
+            return $(colorParent).find(".drag-element").data("color")
+        }
+        $(colorParent).css("background-color", fillColor());
+        $(colorParent).find(".cno").css("background-color", fillColor());
+    };
+}
 
 $('body').keyup(function(event) {
     if (event.keyCode == 13) {
@@ -256,7 +284,7 @@ $(".page-selector").change(function() {
     pageChangeHeader.appendChild(document.createTextNode('Timber Ridge Coloring Page'));
 
     var pageChangeWarning = document.createElement('p');
-    pageChangeWarning.appendChild(document.createTextNode('Are you sure you want to pageChange the colors?'));
+    pageChangeWarning.appendChild(document.createTextNode('Are you sure you want to change the page? This well reset all your work.'));
 
     var pageChangeCancelButton = document.createElement('button');
     $(pageChangeCancelButton).addClass('pageChange-confirm-cancel');
@@ -296,11 +324,11 @@ $(".page-selector").change(function() {
         $("#coloring-page").addClass($(".page-selector").val());
         $("#coloring-page").html("");
         $("#coloring-page").load("coloring-pages/" + $(".page-selector").val() + ".svg", function() {
-        $(this).find(".paint-area").dblclick(function() {
-            clrColor(this);
-            // this.setAttributeNS(null, 'fill', '#f00');
+            $(this).find(".paint-area").dblclick(function() {
+                clrColor(this);
+                // this.setAttributeNS(null, 'fill', '#f00');
+            });
         });
-    });
         var pageChange = document.querySelector('.pageChange-confirm-wrap');
         $(pageChange).animate({
             opacity: 0
@@ -311,6 +339,45 @@ $(".page-selector").change(function() {
     });
 
 });
+
+function genColorSwatches() {
+    for (var i = 0; i < colorsList.length; i++) {
+        // console.log("%c  ", "border: 1px solid #000; background: " + colorsList[i]);
+        var colorSwatch = document.createElement('li');
+        $(colorSwatch).addClass('color-swatch');
+        $(colorSwatch).addClass('cno');
+
+        var dragElem = document.createElement('div');
+        $(dragElem).addClass('drag-element');
+        $(dragElem).attr('data-color', colorsList[i]);
+        // $(dragElem).data('color', colorsList[i]);
+
+        var drop = document.createElement('div');
+        $(drop).addClass('drop');
+        $(drop).addClass('cno');
+        $(dragElem).append(drop);
+
+        for (var r = 1; r <= 4; r++) {
+            var dropHelper = document.createElement('i');
+            $(dropHelper).addClass('drop-helper-' + r);
+            $(dropHelper).addClass('cno');
+            $(dragElem).append(dropHelper);
+        };
+
+        $(colorSwatch).append(dragElem);
+
+        // alert($(colorSwatch).html());
+        $(".color-tool").append(colorSwatch);
+    };
+
+    var resetContainer = document.createElement('li');
+    var resetButton = document.createElement('button');
+    $(resetButton).addClass('reset-button');
+    $(resetButton).attr('title', 'Reset Colors');
+    $(resetButton).append(document.createTextNode('Reset Colors'));
+    $(resetContainer).append(resetButton);
+    $(".color-tool").append(resetContainer);
+}
 
 clrColor = function(pathElement) {
     pathElement.setAttributeNS(null, 'fill', "#FFFFFF");
