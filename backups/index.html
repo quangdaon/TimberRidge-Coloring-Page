@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Coloring Concept</title>
+    <meta name="description" content="A prototype for a coloring page on Timber Ridge Lodge website." />
+    <meta name="keywords" content="coloring, drag and drop, svg, material design, website" />
+    <meta name="author" content="MarcusTec" />
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <center>
+                <div id="coloring-page"></div>
+                <div class="selector">Temporary Test Selector:
+                    <select class="page-selector">
+                        <option value="moose-1">Moose</option>
+                        <option value="summer-1">Summer</option>
+                        <option value="spring-1">Spring</option>
+                        <option value="holidays-1">Holidays</option>
+                    </select>
+                </div>
+                <input type="hidden" class="page-selector" value="summer-1">
+            </center>
+        </div>
+        <!-- /content -->
+        <div class="customizer">
+            <ul class="color-tool">
+                <!-- Done in JS. -->
+                <!-- <input class="color-slider" id="red-slider" type="range" min=0 max=255 value=0>
+                <input class="color-slider" id="green-slider" type="range" min=0 max=255 value=0>
+                <input class="color-slider" id="blue-slider" type="range" min=0 max=255 value=0>
+                <li class="color-swatch cno">
+                    <div class="drag-element" data-color="rgb(0,0,0)">
+                        <div class="drop cno"></div><i class="drop-helper-1 cno"></i><i class="drop-helper-2 cno"></i><i class="drop-helper-3 cno"></i><i class="drop-helper-4 cno"></i></div>
+                </li>
+                <li>
+                    <button class="reset-button" title="Reset Colors">Reset Colors</button>
+                </li> -->
+            </ul>
+        </div>
+        <div class="info-wrap dialog-wrap" id="instructions">
+            <div class="info dialog">
+                <h3>Timber Ridge Coloring Page</h3>
+                <p><img src="img/drag.svg" alt="drag icon" />Drag any color from the left toolbar to an area on the page. A colored outline will indicate a droppable element.</p>
+                <p><img src="img/time.svg" alt="drag icon" />On mobile, wait a tiny bit until you drag the color drop.</p>
+                <p><img src="img/dblclick.svg" alt="drag icon" />Double click on any area to clear its color.</p>
+                <button class="info-close">Got it!</button>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <script src="js/classie.js"></script>
+    <script src="js/interact-1.2.4.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
