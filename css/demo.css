@@ -33,7 +33,7 @@ body {
 }
 
 #coloring-page {
-	cursor: url("../img/oliy-cursor.png"), auto !important;
+	/*cursor: url("../img/oliy-cursor.png"), auto !important;*/
 	width: 600px;
 	max-width: 100%;
 	height: auto;
